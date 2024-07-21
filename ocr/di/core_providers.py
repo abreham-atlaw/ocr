@@ -1,5 +1,7 @@
 import json
 
+import keras
+
 from ocr.config import CLS_MODEL_PATH, WORDLIST_PATH
 from ocr.ocr import OCRModel, SegmentationOCR, OCR
 from ocr.ocr.model import DummyModel
@@ -28,8 +30,8 @@ class CoreProviders:
 	@staticmethod
 	def provide_cls_model() -> 'keras.Model':
 		if CoreProviders.__cls_model is None:
-			# CoreProviders.__cls_model = keras.models.load_model(CLS_MODEL_PATH)
-			CoreProviders.__cls_model = DummyModel()
+			CoreProviders.__cls_model = keras.models.load_model(CLS_MODEL_PATH)
+			# CoreProviders.__cls_model = DummyModel()
 		return CoreProviders.__cls_model
 
 	@staticmethod
